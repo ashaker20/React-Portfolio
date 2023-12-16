@@ -4,9 +4,9 @@ import './Navbar.css'
 export default function Navbar() {
     return (
         <div className="navbar">
-            <Link to="/" className="nav-link active">Home</Link>
-            <Link to="/about" className="nav-link">About</Link>
-            <Link to="/contact" className="nav-link">Contact</Link>
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
         </div>
     )
 }

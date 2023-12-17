@@ -1,4 +1,5 @@
 import ImageCarousel from './ImageCarousel';
+import Sidebar from './SideBar';
 
 export default function Home () {
 
@@ -83,7 +84,7 @@ export default function Home () {
                 "Python",
                 "Flask",
                 "JavaScript",
-                "HTMl",
+                "HTML",
                 "CSS",
                 "MySQL"
             ],
@@ -145,6 +146,18 @@ export default function Home () {
         "MongoDB": "./images/tech_stack/mongodb.png",
     }
 
+
+    const sideBarImages = [
+        "./images/tech_stack/Android_Studio.png",
+        "./images/tech_stack/React.png",
+        "./images/tech_stack/Kotlin.png",
+        "./images/tech_stack/Firebase.png",
+        "./images/tech_stack/framer-motion.svg",
+        "./images/tech_stack/JavaScript-logo.png",
+        "./images/tech_stack/html-1.svg",
+    ]
+
+
     // const contactImages = [
     //     "./images/contact/linkedin.png",
     //     "./images/contact/gmail.png",
@@ -174,8 +187,9 @@ export default function Home () {
 
     return (
         <div className='scroll-container' style={{ width: '100%' }}>
-            <section className='scroll-item' id='home' style={{  height: '100vh', width: '100%', backgroundColor: '#242424' , display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <h1>Adnan Shaker</h1>
+            <section className='scroll-item' id='home' style={{height: '100vh', width: '100%', backgroundColor: '#242424' , display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <h1 style={{zIndex:"1",}}>Adnan Shaker</h1>
+                <Sidebar images={sideBarImages} />
                 <button  onClick={handleDown}  style={{position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px"}}>↓</button>
             </section>
             {/* for each project, make a project section.  */}
@@ -184,9 +198,9 @@ export default function Home () {
                 let color1= index % 2 === 0 ? "#1a1a1a" : "#242424"
                 let color2= index % 2 === 0 ? "#242424" : "#1a1a1a"
                 return (
-                    <section key={p.id} className='scroll-item' id='projects' style={{position: "relative", height: '100vh', width: '100%', backgroundColor: color1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                    <section key={p.id} className='scroll-item' id='projects' style={{zIndex:"0",  position: "relative", height: '100vh', width: '100%', backgroundColor: color1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <div style={{position: "absolute", top: "0px"}}><h1 className='title' >{p.title}</h1></div>
-                        <div style={{margin: "0 150px", display: 'flex', alignItems: "center", gap: "50px"}}>
+                        <div style={{zIndex:"1", margin: "0 150px", display: 'flex', alignItems: "center", gap: "50px"}}>
                             <ImageCarousel key={p.id} {...p} color={color2}/>
                             <div>
                                 <h3 style={{fontSize:"1.2rem"}} >{p.description}</h3>
@@ -198,6 +212,7 @@ export default function Home () {
                                 )}</div>
                             </div>
                         </div>
+                        <Sidebar images={sideBarImages} />
                         {/* {index !== projects.length - 1 &&  */}
                             <button  onClick={handleDown}  style={{position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px", backgroundColor: color2}}>↓</button>
                         {/* } */}
@@ -206,14 +221,16 @@ export default function Home () {
             }
         )}
         <section className='scroll-item' id='contact' style={{  height: '100vh', width: '100%', backgroundColor: '#242424' , flexDirection:"column", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <h1>Contact Me</h1>
+            <h1 style={{zIndex:"1",}}>Contact Me</h1>
             {/* have icons for linkedin, and email.  */}
-            <div style={{display: "flex", gap:"10px", justifyContent:"center", alignItems: "center"}}>
+            <Sidebar images={sideBarImages} />
+
+            <div style={{zIndex:"1", display: "flex", gap:"10px", justifyContent:"center", alignItems: "center"}}>
             {
                 contact.map((c) => {
                     return (
-                        <a href={c.link} key={c.id}>
-                            <img title={c.title} style={{height: "auto", width: "auto", maxHeight:"100px", borderRadius: "10px"}} src={c.image} alt={c.title} />
+                        <a href={c.link} key={c.id} target="_blank" rel="noopener noreferrer">
+                            <img title={c.title} className='contact-img' src={c.image} alt={c.title} />
                         </a>
                     )
                 })

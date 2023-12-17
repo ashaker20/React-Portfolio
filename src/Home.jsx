@@ -34,6 +34,7 @@ export default function Home () {
                 "JavaScript",
                 "HTML",
                 "CSS",
+                "MongoDB",
             ],
             type: "desktop",
             id: 1,
@@ -42,12 +43,7 @@ export default function Home () {
             title: "PilotInSight",
             description: "PilotInSight is a web application that allows users to view and analyze flight data. Users can upload flight data files, and view the data in a variety of ways, including graphs and tables.",
             images: [
-                // "./images/pilotinsight/PilotInSight1.png",
-                // "./images/pilotinsight/PilotInSight2.png",
-                // "./images/pilotinsight/PilotInSight3.png",
-                // "./images/pilotinsight/PilotInSight4.png",
-                // "./images/pilotinsight/PilotInSight5.png",
-                "unsplash.com/photos/4HvPWqQ5Zqg",
+                "./images/pilot_in_sight/image1.png",
             ],
             tools: [
                 "Node.js",
@@ -60,6 +56,76 @@ export default function Home () {
             ],
             type: "desktop",
             id: 2,
+        },
+        {
+            title: "xv6 Docker Implementation",
+            description: "This project was created to allow students to run xv6 on their own computers without having to install a virtual machine. It uses Docker to run the xv6 operating system in a container.",
+            images: [
+                "./images/xv6/xv6.png",
+            ],
+            tools: [
+                "xv6",
+                "C",
+            ],
+            type: "desktop",
+            id: 3,
+        },
+        {
+            title: "Registration Site",
+            description: "This website was created for a school project. It allows users to register for a course, and view their registration status.",
+            images: [
+                "./images/registration_site/RegistrationSite1.png",
+                "./images/registration_site/RegistrationSite2.png",
+                "./images/registration_site/RegistrationSite3.png",
+                "./images/registration_site/RegistrationSite4.png",
+            ],
+            tools: [
+                "Python",
+                "Flask",
+                "JavaScript",
+                "HTMl",
+                "CSS",
+                "MySQL"
+            ],
+            type: "desktop",
+            id: 4,
+        },
+        {
+            title: "Shopping Cart",
+            description: "This website was created for a school project. It allows users to add items to a shopping cart, and view their cart.",
+            images: [
+                "./images/shopping_cart/ShoppingCart1.png",
+                "./images/shopping_cart/ShoppingCart2.png",
+                "./images/shopping_cart/ShoppingCart3.png",
+                "./images/shopping_cart/ShoppingCart4.png",
+            ],
+            tools: [
+                "Python",
+                "Flask",
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "SQLite",
+            ],
+            type: "desktop",
+            id: 5,
+        },
+        {
+            title: "Snow Climb",
+            description: "Snow Climb is a mobile game created using Unity. It is a 2D platformer where the player must climb a mountain while avoiding obstacles.",
+            images: [
+                "./images/snow_climb/SnowClimb1.png",
+                "./images/snow_climb/SnowClimb2.png",
+                "./images/snow_climb/SnowClimb3.png",
+                "./images/snow_climb/SnowClimb4.png",
+                "./images/snow_climb/SnowClimb5.png",
+            ],
+            tools: [
+                "Unity",
+                "C#",
+            ],
+            type: "desktop",
+            id: 6,
         }
     ]
 
@@ -76,7 +142,28 @@ export default function Home () {
         "Express": "./images/tech_stack/express.png",
         "Python": "./images/tech_stack/Python.png",
         "Cesium.js": "./images/tech_stack/CesiumJS.png",
+        "MongoDB": "./images/tech_stack/mongodb.png",
     }
+
+    // const contactImages = [
+    //     "./images/contact/linkedin.png",
+    //     "./images/contact/gmail.png",
+    // ]
+
+    const contact = [
+        {
+            title: "LinkedIn",
+            link: "https://www.linkedin.com/in/adnan-shaker-5bb23725b/",
+            image: "./images/contact/linkedin.png",
+            id: 0,
+        },
+        {
+            title: "Email",
+            link: "mailto:adnanshaker2002@gmail.com",
+            image: "./images/contact/gmail.png",
+            id: 1,
+        }
+    ]
     
     // console.log(projects["Recipe App"])
     // console.log(projects["Recipe App"].images)
@@ -91,20 +178,19 @@ export default function Home () {
                 <h1>Adnan Shaker</h1>
                 <button  onClick={handleDown}  style={{position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px"}}>↓</button>
             </section>
-
+            {/* for each project, make a project section.  */}
             {projects.map((p, index) => {
 
                 let color1= index % 2 === 0 ? "#1a1a1a" : "#242424"
                 let color2= index % 2 === 0 ? "#242424" : "#1a1a1a"
-
                 return (
                     <section key={p.id} className='scroll-item' id='projects' style={{position: "relative", height: '100vh', width: '100%', backgroundColor: color1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                        <div style={{position: "absolute", top: "0px"}}><h1>{p.title}</h1></div>
+                        <div style={{position: "absolute", top: "0px"}}><h1 className='title' >{p.title}</h1></div>
                         <div style={{margin: "0 150px", display: 'flex', alignItems: "center", gap: "50px"}}>
-                            <ImageCarousel key={p.id} {...p}/>
+                            <ImageCarousel key={p.id} {...p} color={color2}/>
                             <div>
-                                <h3>{p.description}</h3>
-                                <h2>Technologies Used</h2>
+                                <h3 style={{fontSize:"1.2rem"}} >{p.description}</h3>
+                                {/* <h2>Technologies Used</h2> */}
                                 <div style={{display: "flex", justifyContent: "center", gap:"30px", width: "100%", alignItems: "center"}}>
                                     {p.tools.map((t) => {
                                         return (<img title={t} style={{height: "auto", width: "auto", maxWidth:"10%"}} src={techImages[t]}/> )
@@ -112,37 +198,28 @@ export default function Home () {
                                 )}</div>
                             </div>
                         </div>
-                        {index !== projects.length - 1 && 
+                        {/* {index !== projects.length - 1 &&  */}
                             <button  onClick={handleDown}  style={{position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px", backgroundColor: color2}}>↓</button>
-                        }
+                        {/* } */}
                     </section>
                 )
             }
-            )}
-{/* 
-            <section className='scroll-item' id='projects' style={{position: "relative", height: '100vh', width: '100%', backgroundColor: '#242424' , display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <div style={{position: "absolute", top: "0px"}}><h1>Recipe ∞</h1></div>
-                <div style={{margin: "0 150px", display: 'flex', alignItems: "center", gap: "50px"}}>
-                    <ImageCarousel {...projects["Recipe App"]}/>
-                    <div>
-                        <h3>Recipe ∞ is an android application that allows users to search for recipes based on ingredients they have on hand. Users can also create an account to save their favorite recipes and create a shopping list for ingredients they need to buy.</h3>
-                        <h2>Technologies Used</h2>
-                        <div style={{display: "flex", justifyContent: "center", gap:"30px"}}>{projects["Recipe App"].tools.map((t) =><img alt={t} style={{maxWidth:"10%"}} src={techImages[t]}/> )}</div>
-                    </div>
-                </div>
-            </section>
-            <section className='scroll-item' id='projects' style={{position: "relative", height: '100vh', width: '100%', backgroundColor: '#242424' , display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <div style={{position: "absolute", top: "0px"}}><h1>Portfolio</h1></div>
-                <div style={{margin: "0 150px", display: 'flex', alignItems: "center", gap: "50px"}}>
-                    <ImageCarousel {...projects["Portfolio"]}/>
-                    <div>
-                        <p>Recipe App is an android application that allows users to search for recipes based on ingredients they have on hand. Users can also create an account to save their favorite recipes and create a shopping list for ingredients they need to buy.</p>
-                        <h2>Technologies Used</h2>
-                        <div style={{display: "flex", justifyContent: "center", gap:"30px"}}>{projects["Recipe App"].tools.map((t) =><img alt={t} style={{maxWidth:"10%"}} src={techImages[t]}/> )}</div>
-                    </div>
-                </div>
-            </section> */}
-            {/* scroll icon, allow scrolling between pages, smooth transition. */}
+        )}
+        <section className='scroll-item' id='contact' style={{  height: '100vh', width: '100%', backgroundColor: '#242424' , flexDirection:"column", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <h1>Contact Me</h1>
+            {/* have icons for linkedin, and email.  */}
+            <div style={{display: "flex", gap:"10px", justifyContent:"center", alignItems: "center"}}>
+            {
+                contact.map((c) => {
+                    return (
+                        <a href={c.link} key={c.id}>
+                            <img title={c.title} style={{height: "auto", width: "auto", maxHeight:"100px", borderRadius: "10px"}} src={c.image} alt={c.title} />
+                        </a>
+                    )
+                })
+            }
+            </div>
+        </section>
         </div>
     );
 };

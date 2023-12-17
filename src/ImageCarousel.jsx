@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ImageCarousel ({images, type}) {
+export default function ImageCarousel ({images = [], type = "desktop", color = "white"}) {
 
     const [index, setIndex] = useState(0)
 
@@ -28,8 +28,8 @@ export default function ImageCarousel ({images, type}) {
                     <img style={{maxWidth:"100%"}} src= {images[index]}/>
                 </div>
                 <div style={{display: "flex", gap:"20px", justifyContent: "center"}}>
-                    <button onClick={handlePrev} >{"<"}</button>
-                    <button onClick={handleNext}>{">"}</button>
+                    <button style={{backgroundColor: color}}  onClick={handlePrev} >{"<"}</button>
+                    <button style={{backgroundColor: color}} onClick={handleNext}>{">"}</button>
                 </div>
             </div>
         )
@@ -40,8 +40,8 @@ export default function ImageCarousel ({images, type}) {
                     <img style={{maxWidth:"100%", borderRadius: "10px"}} src= {images[index]}/>
                 </div>
                 <div style={{display: "flex", gap:"20px", justifyContent: "center"}}>
-                    <button onClick={handlePrev} >{"<"}</button>
-                    <button onClick={handleNext}>{">"}</button>
+                    <button style={{backgroundColor: color}} onClick={handlePrev} >{"<"}</button>
+                    <button style={{backgroundColor: color}} onClick={handleNext}>{">"}</button>
                 </div>
             </div>
         )

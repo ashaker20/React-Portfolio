@@ -18,3 +18,10 @@ section {
   scroll-snap-align: start;
 }
 
+.title {
+  font-size: 2.5rem;
+  font-weight: 700; 
+  padding: 20px;
+  border-radius: 10px;
+  /* background-color:grey; */
+}

@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <div className='app' >
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           {/* <Route path="/about" element={<h1>About</h1>} />

@@ -1,6 +1,4 @@
 import { useState } from "react";
-import {motion, AnimatePresence} from 'framer-motion'
-// import image from './assets/images/recipe/RecipePhoto1-removebg-preview.png'
 
 export default function ImageCarousel ({images, type}) {
 
@@ -15,6 +13,7 @@ export default function ImageCarousel ({images, type}) {
         }
     }
     function handleNext () {
+        console.log(images)
         if (index == (images.length - 1)){
             setIndex(0)
         }
@@ -36,11 +35,13 @@ export default function ImageCarousel ({images, type}) {
         )
     } else {
         return (
-            <div style={{}}>
-                <img style={{height: "auto", width: "auto", maxWidth:"100%"}} src= {"./public/images/recipe/RecipePhoto1.png"}/>
+            <div style={{width: "500%"}}>
+                <div>
+                    <img style={{maxWidth:"100%", borderRadius: "10px"}} src= {images[index]}/>
+                </div>
                 <div style={{display: "flex", gap:"20px", justifyContent: "center"}}>
-                    <button>{"<"}</button>
-                    <button>{">"}</button>
+                    <button onClick={handlePrev} >{"<"}</button>
+                    <button onClick={handleNext}>{">"}</button>
                 </div>
             </div>
         )

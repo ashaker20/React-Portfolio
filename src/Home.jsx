@@ -37,6 +37,29 @@ export default function Home () {
             ],
             type: "desktop",
             id: 1,
+        },
+        {
+            title: "PilotInSight",
+            description: "PilotInSight is a web application that allows users to view and analyze flight data. Users can upload flight data files, and view the data in a variety of ways, including graphs and tables.",
+            images: [
+                // "./images/pilotinsight/PilotInSight1.png",
+                // "./images/pilotinsight/PilotInSight2.png",
+                // "./images/pilotinsight/PilotInSight3.png",
+                // "./images/pilotinsight/PilotInSight4.png",
+                // "./images/pilotinsight/PilotInSight5.png",
+                "unsplash.com/photos/4HvPWqQ5Zqg",
+            ],
+            tools: [
+                "Node.js",
+                "Express",
+                "JavaScript",
+                "HTML",
+                "CSS",
+                "Python",
+                "Cesium.js",
+            ],
+            type: "desktop",
+            id: 2,
         }
     ]
 
@@ -49,6 +72,10 @@ export default function Home () {
         "JavaScript": "./images/tech_stack/JavaScript-logo.png",
         "HTML": "./images/tech_stack/html-1.svg",
         "CSS": "./images/tech_stack/CSS.png",
+        "Node.js": "./images/tech_stack/NodeJS.png",
+        "Express": "./images/tech_stack/express.png",
+        "Python": "./images/tech_stack/Python.png",
+        "Cesium.js": "./images/tech_stack/CesiumJS.png",
     }
     
     // console.log(projects["Recipe App"])
@@ -65,22 +92,29 @@ export default function Home () {
                 <button  onClick={handleDown}  style={{position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px"}}>↓</button>
             </section>
 
-            {projects.map((p) => {
+            {projects.map((p, index) => {
+
+                let color1= index % 2 === 0 ? "#1a1a1a" : "#242424"
+                let color2= index % 2 === 0 ? "#242424" : "#1a1a1a"
+
                 return (
-                    <section key={p.id} className='scroll-item' id='projects' style={{position: "relative", height: '100vh', width: '100%', backgroundColor: '#242424' , display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                    <section key={p.id} className='scroll-item' id='projects' style={{position: "relative", height: '100vh', width: '100%', backgroundColor: color1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <div style={{position: "absolute", top: "0px"}}><h1>{p.title}</h1></div>
                         <div style={{margin: "0 150px", display: 'flex', alignItems: "center", gap: "50px"}}>
                             <ImageCarousel key={p.id} {...p}/>
                             <div>
                                 <h3>{p.description}</h3>
                                 <h2>Technologies Used</h2>
-                                <div style={{display: "flex", justifyContent: "center", gap:"30px"}}>
+                                <div style={{display: "flex", justifyContent: "center", gap:"30px", width: "100%", alignItems: "center"}}>
                                     {p.tools.map((t) => {
                                         return (<img title={t} style={{height: "auto", width: "auto", maxWidth:"10%"}} src={techImages[t]}/> )
                                     }
                                 )}</div>
                             </div>
                         </div>
+                        {index !== projects.length - 1 && 
+                            <button  onClick={handleDown}  style={{position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px", backgroundColor: color2}}>↓</button>
+                        }
                     </section>
                 )
             }

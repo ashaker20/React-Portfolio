@@ -23,25 +23,25 @@ export default function ImageCarousel ({images = [], type = "desktop", color = "
     }
     if (type === "mobile") {
         return (
-            <div style={{width: "80%"}}>
+            <div style={{maxWidth: "50%"}}>
                 <div>
-                    <img style={{maxWidth:"100%"}} src= {images[index]}/>
+                    <img className="noselect" style={{maxHeight:"100%"}} src= {images[index]}/>
                 </div>
-                <div style={{display: "flex", gap:"20px", justifyContent: "center"}}>
-                    <button style={{backgroundColor: color}}  onClick={handlePrev} >{"<"}</button>
-                    <button style={{backgroundColor: color}} onClick={handleNext}>{">"}</button>
+                <div className="noselect" style={{borderRadius: "5%",width:"100%", height:"auto", backgroundSize: "contain"}}>
+                    <button className="noselect" style={{backgroundColor: color}}  onClick={handlePrev} >{"<"}</button>
+                    <button className="noselect" style={{backgroundColor: color}} onClick={handleNext}>{">"}</button>
                 </div>
             </div>
         )
     } else {
         return (
-            <div style={{width: "500%"}}>
+            <div style={{maxWidth: "50%"}}>
                 <div>
-                    <img style={{maxWidth:"100%", borderRadius: "10px"}} src= {images[index]}/>
+                    <img className="noselect" style={{borderRadius: "5%",width:"100%", height:"auto", backgroundSize: "contain"}} src= {images[index]}/>
                 </div>
                 <div style={{display: "flex", gap:"20px", justifyContent: "center"}}>
-                    <button style={{backgroundColor: color}} onClick={handlePrev} >{"<"}</button>
-                    <button style={{backgroundColor: color}} onClick={handleNext}>{">"}</button>
+                    <button className="noselect" style={{backgroundColor: color}} onClick={handlePrev} >{"<"}</button>
+                    <button className="noselect" style={{backgroundColor: color}} onClick={handleNext}>{">"}</button>
                 </div>
             </div>
         )

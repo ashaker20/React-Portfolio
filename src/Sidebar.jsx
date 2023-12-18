@@ -1,14 +1,30 @@
-
+import { useEffect, useState } from "react"
 
 export default function Sidebar({images}) {
 
+    const [page, setPage] = useState(0)
     function handleClick(index) {
+        setPage(index)
         scrollTo(0, window.innerHeight * index)
     }
+
+    // useEffect(() => {
+    //     window.addEventListener("scroll", () => {
+    //         const scroll = window.scrollY
+    //         const page = Math.floor(scroll * window.innerHeight)
+    //         setPage(page)
+    //     })
+    // },[])
+
+    useEffect(() => {
+        let scroll = Math.floor(document.documentElement.scrollTop/window.innerHeight)
+        setPage(() => scroll)
+        console.log(page)
+    }, [])
     
     return (
         <div style={{
-            position:"absolute", 
+            position:"fixed", 
             display:"flex", 
             justifyContent:"center", 
             flexDirection:"column", 
@@ -17,6 +33,7 @@ export default function Sidebar({images}) {
             gap:"40px", 
             zIndex:"0", 
             width:"auto",
+            top:"7%",
         }} >
             {/* put tool image, draw line straight down */}
             {/* on hover, animation that increases  */}
@@ -24,7 +41,10 @@ export default function Sidebar({images}) {
             {
                 images.map((image, index) => {
                     return (
-                            <img onClick={() => handleClick(index)} className="sidebar-img" src={image}/>
+                        index === page ?
+                            <img key={index} onClick={() => handleClick(index)} className="sidebar-img-selected noselect" src={image}/>
+                        :
+                            <img key={index} onClick={() => handleClick(index)} className="sidebar-img noselect" src={image}/>
                             // {/* <div style={{height: "1px", width: "100%", backgroundColor: "white"}}></div> */}
                     )
                 })

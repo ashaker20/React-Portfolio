@@ -118,8 +118,6 @@ export default function Home () {
                 "./images/snow_climb/SnowClimb1.png",
                 "./images/snow_climb/SnowClimb2.png",
                 "./images/snow_climb/SnowClimb3.png",
-                "./images/snow_climb/SnowClimb4.png",
-                "./images/snow_climb/SnowClimb5.png",
             ],
             tools: [
                 "Unity",
@@ -184,12 +182,12 @@ export default function Home () {
         window.scrollBy(0, window.innerHeight)
     }
 
+
     return (
         <div className='scroll-container' style={{ width: '100%' }}>
             <section className='scroll-item' id='home' style={{height: '100vh', width: '100%', backgroundColor: '#242424' , display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <h1 style={{zIndex:"1",}}>Adnan Shaker</h1>
-                <Sidebar images={sideBarImages} />
-                <button  onClick={handleDown}  style={{position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px"}}>↓</button>
+                <button className="noselect" onClick={handleDown}  style={{zIndex:"2", position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px"}}>↓</button>
             </section>
             {/* for each project, make a project section.  */}
             {projects.map((p, index) => {
@@ -197,23 +195,23 @@ export default function Home () {
                 let color1= index % 2 === 0 ? "#1a1a1a" : "#242424"
                 let color2= index % 2 === 0 ? "#242424" : "#1a1a1a"
                 return (
-                    <section key={p.id} className='scroll-item' id='projects' style={{zIndex:"0",  position: "relative", height: '100vh', width: '100%', backgroundColor: color1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                        <div style={{position: "absolute", top: "0px"}}><h1 className='title' >{p.title}</h1></div>
+                    <section key={p.id} className='scroll-item' id='projects' style={{position: "relative", height: '100vh', width: '100%', backgroundColor: color1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                        <div style={{zIndex:"2", position: "absolute", top: "0px"}}><h1 className='title' >{p.title}</h1></div>
                         <div style={{zIndex:"1", margin: "0 150px", display: 'flex', alignItems: "center", gap: "50px"}}>
                             <ImageCarousel key={p.id} {...p} color={color2}/>
-                            <div>
+                            <div style={{maxWidth:"60%"}} >
                                 <h3 style={{fontSize:"1.2rem"}} >{p.description}</h3>
                                 {/* <h2>Technologies Used</h2> */}
                                 <div style={{display: "flex", justifyContent: "center", gap:"30px", width: "100%", alignItems: "center"}}>
-                                    {p.tools.map((t) => {
-                                        return (<img title={t} style={{height: "auto", width: "auto", maxWidth:"10%", borderRadius:"10px"}} src={techImages[t]}/> )
+                                    {p.tools.map((t, index) => {
+                                        return (<img title={t} className='noselect' key={index} style={{height: "auto", width: "auto", maxWidth:"10%", borderRadius:"10px"}} src={techImages[t]}/> )
                                     }
                                 )}</div>
                             </div>
                         </div>
-                        <Sidebar images={sideBarImages} />
+                        {/* <Sidebar images={sideBarImages} /> */}
                         {/* {index !== projects.length - 1 &&  */}
-                            <button  onClick={handleDown}  style={{zIndex: "1",position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px", backgroundColor: color2}}>↓</button>
+                            <button className="noselect" onClick={handleDown}  style={{zIndex: "2",position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px", backgroundColor: color2}}>↓</button>
                         {/* } */}
                     </section>
                 )
@@ -222,20 +220,21 @@ export default function Home () {
         <section className='scroll-item' id='contact' style={{  height: '100vh', width: '100%', backgroundColor: '#242424' , flexDirection:"column", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <h1 style={{zIndex:"1",}}>Contact Me</h1>
             {/* have icons for linkedin, and email.  */}
-            <Sidebar images={sideBarImages} />
+            {/* <Sidebar images={sideBarImages} /> */}
 
             <div style={{zIndex:"1", display: "flex", gap:"10px", justifyContent:"center", alignItems: "center"}}>
             {
                 contact.map((c) => {
                     return (
                         <a href={c.link} key={c.id} target="_blank" rel="noopener noreferrer">
-                            <img title={c.title} className='contact-img' src={c.image} alt={c.title} />
+                            <img title={c.title} className='contact-img noselect' src={c.image} alt={c.title} />
                         </a>
                     )
                 })
             }
             </div>
         </section>
+        <Sidebar images={sideBarImages} />
         </div>
     );
 };

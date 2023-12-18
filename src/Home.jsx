@@ -1,5 +1,6 @@
 import ImageCarousel from './ImageCarousel';
 import Sidebar from './SideBar';
+import { useEffect, useState } from 'react';
 
 export default function Home () {
 
@@ -65,7 +66,6 @@ export default function Home () {
                 "./images/xv6/xv6.png",
             ],
             tools: [
-                "xv6",
                 "C",
             ],
             type: "desktop",
@@ -144,24 +144,26 @@ export default function Home () {
         "Python": "./images/tech_stack/Python.png",
         "Cesium.js": "./images/tech_stack/CesiumJS.png",
         "MongoDB": "./images/tech_stack/mongodb.png",
+        "C": "./images/tech_stack/c.png",
+        "Flask": "./images/tech_stack/flask.png",
+        "MySQL": "./images/tech_stack/mysql.png",
+        "Unity": "./images/tech_stack/unity.png",
+        "C#": "./images/tech_stack/csharp.png",
+        "SQLite": "./images/tech_stack/SQLite.png",
     }
 
 
     const sideBarImages = [
-        "./images/tech_stack/Android_Studio.png",
-        "./images/tech_stack/React.png",
-        "./images/tech_stack/Kotlin.png",
-        "./images/tech_stack/Firebase.png",
-        "./images/tech_stack/framer-motion.svg",
-        "./images/tech_stack/JavaScript-logo.png",
-        "./images/tech_stack/html-1.svg",
+        "./images/contact/home.png",
+        techImages["Android Studio"],
+        techImages["React"],
+        techImages["Cesium.js"],
+        techImages["C"],
+        techImages["Python"],
+        techImages["MySQL"],
+        techImages["Unity"],
+        "./images/contact/contact.png",
     ]
-
-
-    // const contactImages = [
-    //     "./images/contact/linkedin.png",
-    //     "./images/contact/gmail.png",
-    // ]
 
     const contact = [
         {
@@ -177,9 +179,6 @@ export default function Home () {
             id: 1,
         }
     ]
-    
-    // console.log(projects["Recipe App"])
-    // console.log(projects["Recipe App"].images)
 
     function handleDown() {
         window.scrollBy(0, window.innerHeight)
@@ -207,14 +206,14 @@ export default function Home () {
                                 {/* <h2>Technologies Used</h2> */}
                                 <div style={{display: "flex", justifyContent: "center", gap:"30px", width: "100%", alignItems: "center"}}>
                                     {p.tools.map((t) => {
-                                        return (<img title={t} style={{height: "auto", width: "auto", maxWidth:"10%"}} src={techImages[t]}/> )
+                                        return (<img title={t} style={{height: "auto", width: "auto", maxWidth:"10%", borderRadius:"10px"}} src={techImages[t]}/> )
                                     }
                                 )}</div>
                             </div>
                         </div>
                         <Sidebar images={sideBarImages} />
                         {/* {index !== projects.length - 1 &&  */}
-                            <button  onClick={handleDown}  style={{position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px", backgroundColor: color2}}>↓</button>
+                            <button  onClick={handleDown}  style={{zIndex: "1",position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px", backgroundColor: color2}}>↓</button>
                         {/* } */}
                     </section>
                 )

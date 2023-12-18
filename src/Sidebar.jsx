@@ -1,6 +1,10 @@
 
 
 export default function Sidebar({images}) {
+
+    function handleClick(index) {
+        scrollTo(0, window.innerHeight * index)
+    }
     
     return (
         <div style={{
@@ -18,9 +22,9 @@ export default function Sidebar({images}) {
             {/* on hover, animation that increases  */}
             {/* by the end, overlay goes over whole page. maybe word comes out of right side.  */}
             {
-                images.map((image) => {
+                images.map((image, index) => {
                     return (
-                            <img className="sidebar-img" src={image}/>
+                            <img onClick={() => handleClick(index)} className="sidebar-img" src={image}/>
                             // {/* <div style={{height: "1px", width: "100%", backgroundColor: "white"}}></div> */}
                     )
                 })

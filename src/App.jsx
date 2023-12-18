@@ -6,10 +6,6 @@ import Home from './Home'
 
 function App() {
 
-  useEffect(() => {
-    document.title = "Adnan's Portfolio"
-  }, [])
-
   return (
     <Router>
       <div className='app' >

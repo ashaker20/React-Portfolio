@@ -34,11 +34,9 @@ export default function Home () {
             ],
             tools: [
                 "React",
-                "Framer Motion",
                 "JavaScript",
                 "HTML",
                 "CSS",
-                "MongoDB",
             ],
             type: "desktop",
             id: 1,

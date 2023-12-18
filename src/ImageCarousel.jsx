@@ -23,12 +23,10 @@ export default function ImageCarousel ({images = [], type = "desktop", color = "
     }
     if (type === "mobile") {
         return (
-            <div style={{maxWidth: "50%"}}>
-                <div>
-                    <img className="noselect" style={{maxHeight:"100%"}} src= {images[index]}/>
-                </div>
-                <div className="noselect" style={{borderRadius: "5%",width:"100%", height:"auto", backgroundSize: "contain"}}>
-                    <button className="noselect" style={{backgroundColor: color}}  onClick={handlePrev} >{"<"}</button>
+            <div style={{overflow:"hidden", maxHeight:"9999px"}}>
+                <img className="noselect" style={{borderRadius: "5%",width:"auto", height:"35vw", backgroundSize: "contain"}} src= {images[index]}/>
+                <div style={{display: "flex", gap:"20px", justifyContent: "center"}}>
+                    <button className="noselect" style={{backgroundColor: color}} onClick={handlePrev} >{"<"}</button>
                     <button className="noselect" style={{backgroundColor: color}} onClick={handleNext}>{">"}</button>
                 </div>
             </div>
@@ -36,9 +34,7 @@ export default function ImageCarousel ({images = [], type = "desktop", color = "
     } else {
         return (
             <div style={{maxWidth: "50%"}}>
-                <div>
-                    <img className="noselect" style={{borderRadius: "5%",width:"100%", height:"auto", backgroundSize: "contain"}} src= {images[index]}/>
-                </div>
+                <img className="noselect" style={{borderRadius: "5%",width:"100%", height:"auto", backgroundSize: "contain"}} src= {images[index]}/>
                 <div style={{display: "flex", gap:"20px", justifyContent: "center"}}>
                     <button className="noselect" style={{backgroundColor: color}} onClick={handlePrev} >{"<"}</button>
                     <button className="noselect" style={{backgroundColor: color}} onClick={handleNext}>{">"}</button>

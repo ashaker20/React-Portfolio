@@ -1,10 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './Navbar'
 import Home from './Home'
 
 function App() {
+
+  useEffect(() => {
+    document.title = "Adnan's Portfolio"
+  }, [])
+
   return (
     <Router>
       <div className='app' >

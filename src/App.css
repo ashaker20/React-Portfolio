@@ -50,6 +50,10 @@ section {
   transform: scale(1.5);
 }
 
+.sidebar-img-selected:hover{
+  cursor: pointer;
+}
+
 .contact-img {
   height: auto;
   width: auto;

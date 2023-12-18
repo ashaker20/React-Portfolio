@@ -197,7 +197,7 @@ export default function Home () {
                 return (
                     <section key={p.id} className='scroll-item' id='projects' style={{position: "relative", height: '100vh', width: '100%', backgroundColor: color1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <div style={{zIndex:"2", position: "absolute", top: "0px"}}><h1 className='title' >{p.title}</h1></div>
-                        <div style={{zIndex:"1", margin: "0 150px", display: 'flex', alignItems: "center", gap: "50px"}}>
+                        <div style={{height:"100%",zIndex:"1", margin: "0 150px", display: 'flex', alignItems: "center", gap: "50px"}}>
                             <ImageCarousel key={p.id} {...p} color={color2}/>
                             <div style={{maxWidth:"60%"}} >
                                 <h3 style={{fontSize:"1.2rem"}} >{p.description}</h3>

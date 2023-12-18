@@ -16,11 +16,24 @@ export default function Sidebar({images}) {
     //     })
     // },[])
 
+    
+
+    function updateSidebar() {
+        console.log("IN FUNCTION")
+        let scrollVar = Math.floor(document.documentElement.scrollTop/window.innerHeight)
+        setPage(() => scrollVar)
+    }
+
     useEffect(() => {
-        let scroll = Math.floor(document.documentElement.scrollTop/window.innerHeight)
-        setPage(() => scroll)
-        console.log(page)
+        window.addEventListener('scroll', updateSidebar);
+        addEventListener("wheel", (event) => {scrollBy(0, Math.sign(event.deltaY)*window.window.innerHeight);});
+        // onwheel = (event) => {};
+
+        return () => window.removeEventListener('scroll', updateSidebar);
+
     }, [])
+
+
     
     return (
         <div style={{

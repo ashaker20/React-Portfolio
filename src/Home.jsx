@@ -27,8 +27,10 @@ export default function Home () {
             title: "Portfolio",
             description: "This website was created using React and Framer Motion. It is a single page application that uses React Scroll to navigate between sections.",
             images: [
-                "https://images.unsplash.com/photo-1494253109108-2e30c049369b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D",
-                "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tfGVufDB8fDB8fHww",
+                "./images/portfolio/Portfolio1.png",
+                "./images/portfolio/Portfolio2.png",
+                "./images/portfolio/Portfolio3.png",
+
             ],
             tools: [
                 "React",
@@ -59,18 +61,18 @@ export default function Home () {
             type: "desktop",
             id: 2,
         },
-        {
-            title: "xv6 Docker Implementation",
-            description: "This project was created to allow students to run xv6 on their own computers without having to install a virtual machine. It uses Docker to run the xv6 operating system in a container.",
-            images: [
-                "./images/xv6/xv6.png",
-            ],
-            tools: [
-                "C",
-            ],
-            type: "desktop",
-            id: 3,
-        },
+        // {
+        //     title: "xv6 Docker Implementation",
+        //     description: "This project was created to allow students to run xv6 on their own computers without having to install a virtual machine. It uses Docker to run the xv6 operating system in a container.",
+        //     images: [
+        //         "./images/xv6/xv6.png",
+        //     ],
+        //     tools: [
+        //         "C",
+        //     ],
+        //     type: "desktop",
+        //     id: 3,
+        // },
         {
             title: "Registration Site",
             description: "This website was created for a school project. It allows users to register for a course, and view their registration status.",
@@ -89,7 +91,7 @@ export default function Home () {
                 "MySQL"
             ],
             type: "desktop",
-            id: 4,
+            id: 3,
         },
         {
             title: "Shopping Cart",
@@ -109,7 +111,7 @@ export default function Home () {
                 "SQLite",
             ],
             type: "desktop",
-            id: 5,
+            id: 4,
         },
         {
             title: "Snow Climb",
@@ -124,7 +126,7 @@ export default function Home () {
                 "C#",
             ],
             type: "desktop",
-            id: 6,
+            id: 5,
         }
     ]
 
@@ -156,7 +158,6 @@ export default function Home () {
         techImages["Android Studio"],
         techImages["React"],
         techImages["Cesium.js"],
-        techImages["C"],
         techImages["Python"],
         techImages["MySQL"],
         techImages["Unity"],

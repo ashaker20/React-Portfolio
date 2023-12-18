@@ -34,7 +34,7 @@ export default function ImageCarousel ({images = [], type = "desktop", color = "
     } else {
         return (
             <div style={{maxWidth: "50%"}}>
-                <img className="noselect" style={{borderRadius: "5%",width:"100%", height:"auto", backgroundSize: "contain"}} src= {images[index]}/>
+                <img className="noselect" style={{borderRadius: "5%",width:"100%", height:"auto", backgroundSize: "contain", border:"2px solid gray"}} src= {images[index]}/>
                 <div style={{display: "flex", gap:"20px", justifyContent: "center"}}>
                     <button className="noselect" style={{backgroundColor: color}} onClick={handlePrev} >{"<"}</button>
                     <button className="noselect" style={{backgroundColor: color}} onClick={handleNext}>{">"}</button>

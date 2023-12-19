@@ -157,7 +157,7 @@ export default function Home () {
         techImages["React"],
         techImages["Cesium.js"],
         techImages["Python"],
-        techImages["MySQL"],
+        // techImages["MySQL"],
         techImages["Unity"],
         "./images/contact/contact.png",
     ]

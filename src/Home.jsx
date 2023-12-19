@@ -1,6 +1,7 @@
 import ImageCarousel from './ImageCarousel';
 import Sidebar from './Sidebar';
 import { useEffect, useState } from 'react';
+import {Analytics } from "@vercel/analytics/react"
 
 export default function Home () {
 
@@ -234,6 +235,7 @@ export default function Home () {
             </div>
         </section>
         <Sidebar images={sideBarImages} />
+        <Analytics />
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import ImageCarousel from './ImageCarousel';
-import Sidebar from './SideBar';
+import Sidebar from './Sidebar';
 import { useEffect, useState } from 'react';
 
 export default function Home () {

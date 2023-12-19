@@ -71,26 +71,26 @@ export default function Home () {
         //     type: "desktop",
         //     id: 3,
         // },
-        {
-            title: "Registration Site",
-            description: "This website was created for a school project. It allows users to register for a course, and view their registration status.",
-            images: [
-                "./images/registration_site/RegistrationSite1.png",
-                "./images/registration_site/RegistrationSite2.png",
-                "./images/registration_site/RegistrationSite3.png",
-                "./images/registration_site/RegistrationSite4.png",
-            ],
-            tools: [
-                "Python",
-                "Flask",
-                "JavaScript",
-                "HTML",
-                "CSS",
-                "MySQL"
-            ],
-            type: "desktop",
-            id: 3,
-        },
+        // {
+        //     title: "Registration Site",
+        //     description: "This website was created for a school project. It allows users to register for a course, and view their registration status.",
+        //     images: [
+        //         "./images/registration_site/RegistrationSite1.png",
+        //         "./images/registration_site/RegistrationSite2.png",
+        //         "./images/registration_site/RegistrationSite3.png",
+        //         "./images/registration_site/RegistrationSite4.png",
+        //     ],
+        //     tools: [
+        //         "Python",
+        //         "Flask",
+        //         "JavaScript",
+        //         "HTML",
+        //         "CSS",
+        //         "MySQL"
+        //     ],
+        //     type: "desktop",
+        //     id: 3,
+        // },
         {
             title: "Shopping Cart",
             description: "This website was created for a school project. It allows users to add items to a shopping cart, and view their cart.",
@@ -109,7 +109,7 @@ export default function Home () {
                 "SQLite",
             ],
             type: "desktop",
-            id: 4,
+            id: 3,
         },
         {
             title: "Snow Climb",
@@ -124,7 +124,7 @@ export default function Home () {
                 "C#",
             ],
             type: "desktop",
-            id: 5,
+            id: 4,
         }
     ]
 

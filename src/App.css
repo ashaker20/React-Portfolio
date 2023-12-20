@@ -3,6 +3,7 @@
   margin: 0;
   text-align: center;
   /* border: yellow solid 1px; */
+  max-width: fit-content;
 }
 
 * {

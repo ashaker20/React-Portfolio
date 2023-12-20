@@ -8,8 +8,8 @@ export default function Home () {
 
     const projects = [
         {
-            title: "Recipe ∞",
-            description: "Recipe ∞ (Infinite) is an android application that allows users to browse recipes uploaded by the community. Users can create an account, and view recipes and their instructions, or upload recipes of their own.",
+            title: "RECIPE ∞",
+            description: "Recipe ∞ (Infinite) is an android application that allows users to browse recipes uploaded by the community. Users can create an account and view recipes/their instructions. They can also upload recipes of their own. This was made in Android Studio, with the data being stored in Firebase. This project is in progress.",
             images: [
                 "./images/recipe/RecipePhoto1.png",
                 "./images/recipe/RecipePhoto2.png",
@@ -26,8 +26,8 @@ export default function Home () {
             id: 0,
         },
         {
-            title: "Portfolio",
-            description: "This website was created using React and Framer Motion. It is a single page application that uses React Scroll to navigate between sections.",
+            title: "PORTFOLIO",
+            description: "This website was created using React. It is a single page application that showcases all of my projects, allowing you to scroll between them seamlessly.",
             images: [
                 "./images/portfolio/Portfolio1.png",
                 "./images/portfolio/Portfolio2.png",
@@ -44,8 +44,8 @@ export default function Home () {
             id: 1,
         },
         {
-            title: "PilotInSight",
-            description: "PilotInSight is a web application that allows users to view and analyze flight data. Users can upload flight data files, and view the data in a variety of ways, including graphs and tables.",
+            title: "PILOT IN SIGHT",
+            description: "PilotInSight is a web application that allows users to view and analyze flight data. Users can upload flight data files, and view the data in a variety of ways, including a tailored pdf report. This project is in progress.",
             images: [
                 "./images/pilot_in_sight/image1.png",
             ],
@@ -94,8 +94,8 @@ export default function Home () {
         //     id: 3,
         // },
         {
-            title: "Shopping Cart",
-            description: "This website was created for a school project. It allows users to add items to a shopping cart, and view their cart.",
+            title: "SHOPPING CART",
+            description: "This website was created for a school project. It allows users to add items to a shopping cart, view their cart, checkout, and review previous orders. The site was created with Python-Flask, using SQLite for the backend. ",
             images: [
                 "./images/shopping_cart/ShoppingCart1.png",
                 "./images/shopping_cart/ShoppingCart2.png",
@@ -114,7 +114,7 @@ export default function Home () {
             id: 3,
         },
         {
-            title: "Snow Climb",
+            title: "SNOW CLIMB",
             description: "Snow Climb is a mobile game created using Unity. It is a 2D platformer where the player must climb a mountain while avoiding obstacles.",
             images: [
                 "./images/snow_climb/SnowClimb1.png",
@@ -183,14 +183,73 @@ export default function Home () {
         window.scrollBy(0, window.innerHeight)
     }
 
+    const [width, setWidth] = useState(window.innerWidth);
+
+    function handleWindowSizeChange() {
+        setWidth(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
+
+    const isMobile = width <= 768;
+
+    const [name, setName] = useState("")
+    const [counter, setCounter] = useState(0)
+
+    useEffect(() => {
+        const myName = "Adnan Shaker".split("")
+        if (counter < myName.length) {
+        const timeout = setTimeout(() => {
+            setName((prev) => prev + myName[counter])
+            setCounter((prev) => prev + 1)
+        }, 100)
+
+        return () => {
+            clearTimeout(timeout)
+        }
+        }
+
+    }, [name])
+
+    const [visible, setVisible] = useState(false)
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setVisible((f) => (!f))
+        }, 300)
+
+        return () => {
+            clearTimeout(timeout)
+        }
+
+    }, [visible])
+
 
     return (
-        <div className='scroll-container' style={{ width: '100%' }}>
-            <section className='scroll-item' id='home' style={{height: '100vh', width: '100%', backgroundColor: '#242424' , display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <h1 style={{zIndex:"1",}}>Adnan Shaker</h1>
+        <div className='scroll-container'>
+            <section className='scroll-item' id='home' style={{ height:"100vh",backgroundColor: '#242424' , display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <h1 style={{zIndex:"1",}}>
+                        {
+                            name.split("").map((letter, index) => {
+                                return (
+                                    <span key={index} className='indivLetter'>{letter}</span>
+                                )
+                            })
+
+                        }
+                        {visible 
+                            ? <span className='typing' style={{color: "white"}}>|</span>
+                            : <span className='typing' style={{color: "transparent"}}>|</span>    
+                        }
+
+                </h1>
                 <button className="noselect" onClick={handleDown}  style={{zIndex:"2", position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px"}}>↓</button>
             </section>
-            {/* for each project, make a project section.  */}
             {projects.map((p, index) => {
 
                 let color1= index % 2 === 0 ? "#1a1a1a" : "#242424"
@@ -200,9 +259,8 @@ export default function Home () {
                         <div style={{zIndex:"2", position: "absolute", top: "0px"}}><h1 className='title' >{p.title}</h1></div>
                         <div style={{height:"100%",zIndex:"1", margin: "0 150px", display: 'flex', alignItems: "center", gap: "50px"}}>
                             <ImageCarousel key={p.id} {...p} color={color2}/>
-                            <div style={{maxWidth:"60%"}} >
-                                <h3 style={{fontSize:"1.2rem"}} >{p.description}</h3>
-                                {/* <h2>Technologies Used</h2> */}
+                            <div style={{maxWidth:"60%"}} className='desc'>
+                                <h3 style={{fontSize:"1.2rem"}}>{p.description}</h3>
                                 <div style={{display: "flex", justifyContent: "center", gap:"30px", width: "100%", alignItems: "center"}}>
                                     {p.tools.map((t, index) => {
                                         return (<img title={t} className='noselect' key={index} style={{height: "auto", width: "auto", maxWidth:"10%", borderRadius:"10px"}} src={techImages[t]}/> )
@@ -210,20 +268,16 @@ export default function Home () {
                                 )}</div>
                             </div>
                         </div>
-                        {/* <Sidebar images={sideBarImages} /> */}
-                        {/* {index !== projects.length - 1 &&  */}
-                            <button className="noselect" onClick={handleDown}  style={{zIndex: "2",position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px", backgroundColor: color2}}>↓</button>
-                        {/* } */}
+                        <button className="noselect" onClick={handleDown}  style={{zIndex: "2",position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px", backgroundColor: color2}}>↓</button>
                     </section>
                 )
             }
         )}
-        <section className='scroll-item' id='contact' style={{  height: '100vh', width: '100%', backgroundColor: '#242424' , flexDirection:"column", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <section className='scroll-item' id='contact' style={{height:"100vh", backgroundColor: '#242424' , flexDirection:"column", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <h1 style={{zIndex:"1",}}>Contact Me</h1>
             {/* have icons for linkedin, and email.  */}
-            {/* <Sidebar images={sideBarImages} /> */}
 
-            <div style={{zIndex:"1", display: "flex", gap:"10px", justifyContent:"center", alignItems: "center"}}>
+            <div style={{zIndex:"1", display: "flex", gap:"30px", justifyContent:"center", alignItems: "center"}}>
             {
                 contact.map((c) => {
                     return (
@@ -235,7 +289,11 @@ export default function Home () {
             }
             </div>
         </section>
-        <Sidebar images={sideBarImages} />
+        {isMobile ? 
+            <Sidebar images={sideBarImages} type="mobile"/> 
+            :
+            <Sidebar images={sideBarImages} type="desktop"/>
+        }
         <Analytics />
         <SpeedInsights />
         </div>

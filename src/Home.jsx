@@ -244,7 +244,7 @@ export default function Home () {
                         }
                         {visible 
                             ? <span className='typing' style={{color: "white"}}>|</span>
-                            : <span className='typing' style={{color: "transparent"}}>|</span>    
+                            : <span className='typing' style={{color: "transparent", textShadow:"none"}}>|</span>    
                         }
 
                 </h1>
@@ -255,6 +255,23 @@ export default function Home () {
                 let color1= index % 2 === 0 ? "#1a1a1a" : "#242424"
                 let color2= index % 2 === 0 ? "#242424" : "#1a1a1a"
                 return (
+                    isMobile ?
+                    <section key={p.id} className='scroll-item' id='projects' style={{position: "relative", height: '200vh', width: '100%', backgroundColor: color1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                        <div style={{zIndex:"2", position: "absolute", top: "0px"}}><h1 className='title' >{p.title}</h1></div>
+                        <div style={{height:"100%",zIndex:"1", margin: "0 150px", display: 'flex', alignItems: "center", gap: "50px", flexDirection:"column"}}>
+                            <ImageCarousel key={p.id} {...p} color={color2} type='mobile'/>
+                            <div style={{maxWidth:"60%"}} className='desc'>
+                                <h3 style={{fontSize:"1.2rem"}}>{p.description}</h3>
+                                <div style={{display: "flex", justifyContent: "center", gap:"30px", width: "100%", alignItems: "center"}}>
+                                    {p.tools.map((t, index) => {
+                                        return (<img title={t} className='noselect' key={index} style={{height: "auto", width: "auto", maxWidth:"10%", borderRadius:"10px"}} src={techImages[t]}/> )
+                                    }
+                                )}</div>
+                            </div>
+                        </div>
+                        <button className="noselect" onClick={handleDown}  style={{zIndex: "2",position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px", backgroundColor: color2}}>↓</button>
+                    </section>
+                    :
                     <section key={p.id} className='scroll-item' id='projects' style={{position: "relative", height: '100vh', width: '100%', backgroundColor: color1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <div style={{zIndex:"2", position: "absolute", top: "0px"}}><h1 className='title' >{p.title}</h1></div>
                         <div style={{height:"100%",zIndex:"1", margin: "0 150px", display: 'flex', alignItems: "center", gap: "50px"}}>

@@ -2,41 +2,32 @@ import { useEffect, useState } from "react"
 
 export default function Sidebar({images, type = "desktop"}) {
 
-    const [page, setPage] = useState(0)
+    const [page, setPage] = useState(Math.round(document.documentElement.scrollTop/window.innerHeight))
+    const [height, setHeight] = useState(document.documentElement.scrollTop)
+
     function handleClick(index) {
         scrollTo(0, window.innerHeight * index)
         updateSidebar()
     }
 
-    // useEffect(() => {
-    //     window.addEventListener("scroll", () => {
-    //         const scroll = window.scrollY
-    //         const page = Math.floor(scroll * window.innerHeight)
-    //         setPage(page)
-    //     })
-    // },[])
-
-    
-
     function updateSidebar() {
-        // console.log("current Top:" + document.documentElement.scrollTop)
         let scrollVar = Math.round(document.documentElement.scrollTop/window.innerHeight)
-        // console.log(scrollVar)
         setPage(() => scrollVar)
     }
 
     useEffect(() => {
-        // console.log("height:" + window.innerHeight)
-        // console.log("top:" + document.documentElement.scrollTop)
         window.addEventListener('scroll', updateSidebar);
         addEventListener("wheel", (event) => {scrollBy(0, Math.sign(event.deltaY)*window.innerHeight);});
-        // onwheel = (event) => {};
-
         return () =>  {
             window.removeEventListener('scroll', updateSidebar);
         }
 
     }, [])
+
+
+    useEffect(() => {
+        setHeight(window.innerHeight)
+    }, [height])
 
     const isMobile = type === "mobile" ? true : false
     
@@ -68,7 +59,6 @@ export default function Sidebar({images, type = "desktop"}) {
                         )
                     })
                 }
-                {/* <div></div> */}
             </div>
     )
 }

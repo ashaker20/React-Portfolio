@@ -17,12 +17,45 @@ export default function Sidebar({images, type = "desktop"}) {
 
     useEffect(() => {
         window.addEventListener('scroll', updateSidebar);
-        addEventListener("wheel", (event) => {scrollBy(0, Math.sign(event.deltaY)*window.innerHeight);});
+        window.addEventListener("wheel", (event) => {scrollBy(0, Math.sign(event.deltaY)*window.innerHeight);});
+        
+        // window.addEventListener('touchstart', handleTouchStart);        
+        // window.addEventListener('touchmove', handleTouchMove);
+
+        // var yDown = null;
+
+        // function handleTouchStart(evt) {
+        //     console.log("start")
+        //     const firstTouch = evt.touches[0];                                      
+        //     yDown = firstTouch.clientY;                                      
+        // };                                                
+                                                                                
+        // function handleTouchMove(evt) {
+        //     console.log("move")
+        //     if (! yDown ) {
+        //         console.log("returned")
+        //         return;
+        //     }
+
+        //     var yUp = evt.touches[0].clientY;
+        //     var yDiff = yDown - yUp;
+        //     if ( yDiff > 0 ) {
+        //         scrollBy(0, window.innerHeight)
+        //     } else if (yDiff < 0) {
+        //         scrollBy(0, -window.innerHeight)
+        //     }
+        //     yDown = null;                                             
+        // };
+        
         return () =>  {
             window.removeEventListener('scroll', updateSidebar);
+            // window.removeEventListener("touchstart", handleTouchStart);
+            // window.removeEventListener("touchmove", handleTouchMove);
         }
 
     }, [])
+
+
 
 
     useEffect(() => {
@@ -43,7 +76,7 @@ export default function Sidebar({images, type = "desktop"}) {
                 gap:"40px", 
                 zIndex:"0", 
                 width:"auto",
-                top:"7%",
+                top:"10%",
             }} >
                 {/* put tool image, draw line straight down */}
                 {/* on hover, animation that increases  */}

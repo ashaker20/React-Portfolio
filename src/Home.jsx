@@ -232,7 +232,7 @@ export default function Home () {
 
     return (
         <div className='scroll-container'>
-            <section className='scroll-item' id='home' style={{ height:"100vh",backgroundColor: '#242424' , display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <section className='scroll-item' id='home' style={{ height:"100dvh",backgroundColor: '#242424' , display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <h1 style={{zIndex:"1",}}>
                         {
                             name.split("").map((letter, index) => {
@@ -248,53 +248,60 @@ export default function Home () {
                         }
 
                 </h1>
-                <button className="noselect" onClick={handleDown}  style={{zIndex:"2", position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px"}}>↓</button>
+                <button className="noselect downButton" onClick={handleDown}  >↓</button>
             </section>
             {projects.map((p, index) => {
 
                 let color1= index % 2 === 0 ? "#1a1a1a" : "#242424"
-                let color2= index % 2 === 0 ? "#242424" : "#1a1a1a"
+                let color2= index % 2 === 0 ? "#242424" : "#1a1a1a" 
                 return (
-                    isMobile ?
-                    <>
-                        <section key={p.id} className='scroll-item' id='projects' style={{position: "relative", height: '100vh', backgroundColor: color1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                            <div style={{zIndex:"2", position: "absolute", top: "0px"}}><h1 className='title' >{p.title}</h1></div>
-                            <ImageCarousel key={p.id} {...p} color={color2} userType='mobile'/>
-                            <button className="noselect" onClick={handleDown}  style={{zIndex: "2",position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px", backgroundColor: color2}}>↓</button>
-                        </section>
-                        <section key={p.id + projects.length} className='scroll-item' id='projects' style={{position: "relative", height: '100vh', backgroundColor: color1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                            <div style={{maxWidth:"60%"}} className='desc'>
-                                    <h3 style={{fontSize:"1.2rem"}}>{p.description}</h3>
-                                    <div style={{display: "flex", justifyContent: "center", gap:"10%", width: "100%", alignItems: "center", flexWrap:"wrap"}}>
+                    <section key={p.id} className='scroll-item' id='projects' style={{height:"100vh", position: "relative", maxWidth: '100%', backgroundColor: color1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                        {p.type === "mobile" ?  
+                        <div style={{maxWidth:"80%",  height:"100%",zIndex:"1", display: 'flex', alignItems: "center", gap: "", flexDirection:"column",}}>
+                            <h1 className='title' >{p.title}</h1>   
+                            <div style={{justifyContent:"center", height:"100%",zIndex:"1", display: 'flex', alignItems: "center", gap: "50px", flexWrap:"wrap"}}>
+                                <ImageCarousel key={p.id} {...p} color={color2}/>
+                                <div style={{flex:"60%", }} className='desc mobile-desc'>
+                                    <h3 style={{fontSize:"1.0rem", lineClamp:"2"}}>{p.description}</h3>
+                                    <div style={{display: "flex", justifyContent: "center", gap:"30px", width: "100%", alignItems: "center", flexWrap:"wrap"}}>
                                         {p.tools.map((t, index) => {
-                                            return (<img title={t} className='noselect' key={index} style={{height: "auto", width: "auto", maxWidth:"20%", borderRadius:"10px"}} src={techImages[t]}/> )
+                                            return (<img title={t} className='noselect' key={index} style={{height: "auto", width: "auto", maxWidth:"5%", borderRadius:"10px"}} src={techImages[t]}/> )
                                         }
-                                    )}</div>
-                            </div>
-                            <button className="noselect" onClick={handleDown}  style={{zIndex: "2",position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px", backgroundColor: color2}}>↓</button>
-                        </section>
-                    </>
-                    :
-                    <section key={p.id} className='scroll-item' id='projects' style={{position: "relative", height: '100vh', width: '100%', backgroundColor: color1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                        <div style={{zIndex:"2", position: "absolute", top: "0px"}}><h1 className='title' >{p.title}</h1></div>
-                        <div style={{height:"100%",zIndex:"1", margin: "0 150px", display: 'flex', alignItems: "center", gap: "50px"}}>
+                                    )}
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                        :
+                        <div style={{maxWidth:"80%",  height:"100%",zIndex:"1", display: 'flex', alignItems: "center", gap: "20px", flexDirection:"column",}}>
+                            <h1 className='title' >{p.title}</h1>    
                             <ImageCarousel key={p.id} {...p} color={color2}/>
-                            <div style={{maxWidth:"60%"}} className='desc'>
-                                <h3 style={{fontSize:"1.2rem"}}>{p.description}</h3>
+                            <div style={{}} className='desc'>
+                                <h3 style={{fontSize:"1.0rem"}}>{p.description}</h3>
                                 <div style={{display: "flex", justifyContent: "center", gap:"30px", width: "100%", alignItems: "center", flexWrap:"wrap"}}>
                                     {p.tools.map((t, index) => {
-                                        return (<img title={t} className='noselect' key={index} style={{height: "auto", width: "auto", maxWidth:"10%", borderRadius:"10px"}} src={techImages[t]}/> )
+                                        return (<img title={t} className='noselect' key={index} style={{height: "auto", width: "auto", maxWidth:"5%", borderRadius:"10px"}} src={techImages[t]}/> )
                                     }
                                 )}</div>
                             </div>
                         </div>
-                        <button className="noselect" onClick={handleDown}  style={{zIndex: "2",position:"absolute" , bottom: "30px", fontSize: "2.5em", padding:"10px", borderRadius:"40px", backgroundColor: color2}}>↓</button>
+                        }
+                        
                     </section>
                 )
             }
         )}
         <section className='scroll-item' id='contact' style={{height:"100vh", backgroundColor: '#242424' , flexDirection:"column", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <h1 style={{zIndex:"1",}}>Contact Me</h1>
+            <h1 style={{zIndex:"1",}}>
+                        {
+                            "Contact Me".split("").map((letter, index) => {
+                                return (
+                                    <span key={index} className='indivLetter'>{letter}</span>
+                                )
+                            })
+
+                        }
+            </h1>
             {/* have icons for linkedin, and email.  */}
 
             <div style={{zIndex:"1", display: "flex", gap:"30px", justifyContent:"center", alignItems: "center"}}>

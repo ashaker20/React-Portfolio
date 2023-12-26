@@ -12,6 +12,8 @@
 
 
 
+
+
 html {
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
@@ -152,6 +154,11 @@ section {
 
 h1,h2,h3,h4,h5,h6 {
   cursor: default;
+  color: white;
+}
+
+p {
+  color:white
 }
 
 h1 {
